@@ -1,0 +1,32 @@
+extends layout.pug 
+
+block content 
+  .container 
+    h1 Create application 
+
+    form.form(action="/create" method='POST')
+      label First Name 
+      input.input(type="text", name="name")
+
+      label Last name  
+      input.input(type="text", name="surname")
+
+      .row
+        .col-sm-6
+          .form-group
+            label.control-label.requiredField(for='JobType')
+              | Type of job you wish to apply
+          .col-xs-12
+            select#JobType.select.form-control.input-lg(form='addJob', name='JobType').input
+              option(value='1') Hardware engineer 
+              option(value='2') Software developer 
+              option(value='3') Web developer
+              option(value='4') Network engineer
+              option(value='5') Software tester
+              option(value='6') User experience (UX) designer
+              option(value='7') Data scientist
+
+      lable Description 
+      textarea.input(type="text" name="description") 
+
+      button.btn Create application

@@ -1,0 +1,10 @@
+extends layout.pug
+
+block content 
+  div.container 
+    h1 All applications 
+
+    each application in applications 
+      div.application-wrapper
+        a.application(href='#') = application
+        a.delete(href=#) = delete

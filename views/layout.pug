@@ -1,0 +1,20 @@
+doctype html
+html(lang="eng")
+  head 
+    title HR Application
+    link(rel='stylesheet' href='/static/styles/style.css')
+    link(rel="icon" type="image/png" href="/static/images/hr.png" )
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet")
+
+  body
+    header.navbar
+      h1
+        img.logo(src='/static/images/hr.png' alt='hr' style='width:80px; height:80px;')
+        a(href='/') HR Application
+
+      nav.nav
+        a(href='/applications') Applications
+        a(href='/archive') Archive
+
+    block content 
