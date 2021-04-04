@@ -6,5 +6,6 @@ block content
 
     each application in applications 
       div.application-wrapper
-        a.application(href='#') = application
-        a.delete(href=#) = delete
+        a.application(href='applications/detail')= application
+        a.delete(href='#') Delete
+        

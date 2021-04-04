@@ -1,15 +1,21 @@
 extends layout.pug 
 
 block content 
-  .container 
+  div.container 
     h1 Create application 
+  
+    if error 
+      p.error Please, fill the required fields to proceed!
+
+    if success 
+      p.success Your application has been successfully submitted!
 
     form.form(action="/create" method='POST')
       label First Name 
-      input.input(type="text", name="name")
+      input.input(type="text" name="name")
 
       label Last name  
-      input.input(type="text", name="surname")
+      input.input(type="text" name="surname")
 
       .row
         .col-sm-6
@@ -18,13 +24,13 @@ block content
               | Type of job you wish to apply
           .col-xs-12
             select#JobType.select.form-control.input-lg(form='addJob', name='JobType').input
-              option(value='1') Hardware engineer 
-              option(value='2') Software developer 
-              option(value='3') Web developer
-              option(value='4') Network engineer
-              option(value='5') Software tester
-              option(value='6') User experience (UX) designer
-              option(value='7') Data scientist
+              option(value='hardware') Hardware engineer 
+              option(value='software') Software developer 
+              option(value='web') Web developer
+              option(value='network') Network engineer
+              option(value='test') Software tester
+              option(value='ux') User experience (UX) designer
+              option(value='data') Data scientist
 
       lable Description 
       textarea.input(type="text" name="description") 
