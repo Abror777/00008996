@@ -2,5 +2,6 @@ extends layout.pug
 
 block content   
   div.container 
-    h1.title Application-1
-    p.description Description of the employee
+    h1.name #{ application.name }
+    p.surname #{ application.surname }
+    p.description #{ application.description }

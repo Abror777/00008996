@@ -1,13 +1,13 @@
+const { application } = require('express')
 const express = require('express')
 const app = express()
 
 const fs = require('fs')
 
-app.use(express.urlencoded({ extended: false }))
-
 app.set('view engine', 'pug')
 
 app.use('/static', express.static('public'))
+app.use(express.urlencoded({ extended: false }))
 
 // Localhost:8000
 app.get('/', (req, res) => {
@@ -21,7 +21,6 @@ app.get('/create', (req, res) => {
 app.post('/create', (req, res) => {
 	const name = req.body.name
 	const surname = req.body.surname
-	const JobType =  req.body.JobType
 	const description = req.body.description
 
 	if (name.trim() === '' && surname.trim() === '' && description.trim() === '' ) {
@@ -49,14 +48,28 @@ app.post('/create', (req, res) => {
 
 })
 
-const applications = ['Application-1', 'Application-2']
-
 app.get('/applications', (req, res) => {
-	res.render('applications', { applications: applications })
+	fs.readFile('./data/applications.json', (err, data) => {
+	  if (err) throw err
+
+	  const applications = JSON.parse(data)
+
+	  res.render('applications', { applications: applications })
+    })
 })
 
-app.get('/applications/detail', (req, res) => {
-	res.render('detail')
+app.get('/applications/:id', (req, res) => { 
+	const id = req.params.id
+
+	fs.readFile('./data/applications.json', (err, data) => {
+		if (err) throw err
+
+		const applications = JSON.parse(data)
+
+		const application = applications.filter(application => application.id == id)[0]
+
+		res.render('detail', { application: application })
+	})
 })
 
 app.listen(8000, err => {
@@ -67,4 +80,4 @@ app.listen(8000, err => {
 
 function id () {
 	return '_' + Math.random().toString(36).substr(2, 9);
-  }; 
+  }

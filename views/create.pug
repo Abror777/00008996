@@ -17,21 +17,6 @@ block content
       label Last name  
       input.input(type="text" name="surname")
 
-      .row
-        .col-sm-6
-          .form-group
-            label.control-label.requiredField(for='JobType')
-              | Type of job you wish to apply
-          .col-xs-12
-            select#JobType.select.form-control.input-lg(form='addJob', name='JobType').input
-              option(value='hardware') Hardware engineer 
-              option(value='software') Software developer 
-              option(value='web') Web developer
-              option(value='network') Network engineer
-              option(value='test') Software tester
-              option(value='ux') User experience (UX) designer
-              option(value='data') Data scientist
-
       lable Description 
       textarea.input(type="text" name="description") 
 
