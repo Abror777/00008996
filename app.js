@@ -115,7 +115,7 @@ app.get('/applications/:id/archive', (req, res) => {
 	  const splicedId = applications.splice(applicationId,1)[0]
 	  applications.push(splicedId)
 
-	  fs.writeFile('./data/application.json', JSON.stringify(applications), (err) => {
+	  fs.writeFile('./data/applications.json', JSON.stringify(applications), (err) => {
 		if (err) throw err
 
 		res.redirect('/applications')
