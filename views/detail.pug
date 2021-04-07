@@ -3,5 +3,10 @@ extends layout.pug
 block content   
   div.container 
     h1.name #{ application.name }
-    p.surname #{ application.surname }
+    h2.surname #{ application.surname }
+    p.email #{ application.email }
+    p.phone #{ application.phone }
     p.description #{ application.description }
+
+      if !application.archive
+        a.archive-link(href=`/applications/${ application.id }/archive`) Archive application

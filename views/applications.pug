@@ -2,10 +2,14 @@ extends layout.pug
 
 block content 
   div.container 
-    h1 All applications 
+    h1 All applications
+
+    if deleted
+      p.success Deleted successfully! 
 
     each application in applications 
       div.application-wrapper
-        a.application(href=`/applications/${ application.id }`) #{ application.name }
-        a.delete(href='#') Delete
+        a.application(href=`/applications/${ application.id }`) #{ application.name } #{ application.surname }
+        a.delete(href=`/${ application.id }/delete`) Delete
+        
         
